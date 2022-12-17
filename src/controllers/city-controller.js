@@ -66,6 +66,27 @@ const get = async (req,res) => {
     }
 }
 
+// get  /city
+const getAll = async (req,res) => {
+    try {
+        const response = await cityService.getCityAll();
+        return res.status(200).json({
+            data: response,
+            success: true,
+            messange: "Successfully fetched all cities",
+            err: {}
+        })
+    } catch (error) {
+         console.log(error);
+         return res.status(500).json({
+            data: {},
+            success: false,
+            messange: "Not able to get a city",
+            err: error
+         });
+    }
+}
+
 // Patch  /city/:id (which city you want to update) -> req.body (parameters or data you want to update)
 const update = async(req,res) => {
     try {
@@ -91,5 +112,6 @@ module.exports = {
     create,
     destroy,
     update,
-    get
+    get,
+    getAll
 }
