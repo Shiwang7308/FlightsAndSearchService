@@ -26,5 +26,10 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'City',
   });
+  
+  if(process.env.SYNC_DB) {
+    db.sequelize.sync({alter: true});
+  }
   return City;
 };
+

@@ -3,10 +3,11 @@ const { Op } = require('sequelize');
 class CityRepository{
     
     async createCity({name}) {
+        console.log("from city repo",name);
         try{
               const city = await City.create({
                 // name:name
-                name
+                name:name
             });
               return city;
         }
